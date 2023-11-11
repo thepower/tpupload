@@ -1,6 +1,5 @@
 local _M = {}
 
-local view = require "tpupload.view"
 local model = require "tpupload.model"
 local cjson = require "cjson"
 local upload = require "resty.upload"
