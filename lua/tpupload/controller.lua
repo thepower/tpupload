@@ -69,14 +69,14 @@ function _M.upload()
         if form then
             file = io.open(file_name, "w+")
             if not file then
-                ngx.say(cjson.encode({code=2,message="file save failed"}))
-                return
+                   resp_header["error"] = cjson.encode({code=2,message="file save failed"})
+                   return ngx.exit(500);
             end
             while true do
                 local typ, res, err = form:read()
-                if not typ then
-                    ngx.say(cjson.encode({code=1,message="nofile upload"}))
-                    return
+               if not typ then
+                       resp_header["error"] = cjson.encode({code=1,message="nofile upload"})
+                       return ngx.exit(500);
                 end
 
                 if typ == "body" then
