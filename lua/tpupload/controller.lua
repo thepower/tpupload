@@ -47,7 +47,7 @@ end
 
 function _M.upload()
     local uri = ngx_var.uri
-    local m = re_match(uri, [[/(\w+)/([01-9a-fA-F]{64})$]], 'jox', nil, match_table)
+    local m = re_match(uri, [[/(\w+)/([01-9a-fA-F]{64})]], 'jox', nil, match_table)
     if m then
         local found = model.find_file(m[1],m[2])
         --print("JSON: ", cjson.encode(found))
