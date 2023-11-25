@@ -37,7 +37,7 @@ function _M.download()
         if p == nil then
             return ngx.exit(404)
         else
-            resp_header["Cache-Control"] = "Cache-Control: max-age=31536000, immutable"
+            resp_header["Cache-Control"] = "max-age=31536000, immutable"
             ngx.print(p.bin)
             return
         end
