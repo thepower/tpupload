@@ -33,11 +33,11 @@ function _M.download()
             resp_header["error"] = "invalid hex string length"
             return ngx.exit(400)
         end
-        resp_header["Cache-Control"] = "max-age=7200"
         local p = model.get_file_id_hash(m[1],m[2])
         if p == nil then
             return ngx.exit(404)
         else
+            resp_header["Cache-Control"] = "Cache-Control: max-age=31536000, immutable"
             ngx.print(p.bin)
             return
         end
