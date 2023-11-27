@@ -27,7 +27,7 @@ function _M.download()
     local uri = ngx_var.uri
 
     ngx.log(ngx.ERR,uri);
-    local m = re_match(uri, [[/(\w+)/([01-9a-fA-F]{6,64})]], 'jox', nil, match_table)
+    local m = re_match(uri, [[/(\d+)/([01-9a-fA-F]{6,64})]], 'jox', nil, match_table)
     if m then
         if #m[2] % 2 == 1 then
             resp_header["error"] = "invalid hex string length"
